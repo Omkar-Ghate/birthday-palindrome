@@ -195,6 +195,7 @@ export default function App() {
       <div className="header">
         <h1>Birthday Palindrome</h1>
         <h2>Check if your birthday is a palindrome...</h2>
+        <a href="#main">Try it</a>
       </div>
 
       <div className="main">

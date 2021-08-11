@@ -1,8 +1,55 @@
+:root {
+  --primary-color: #2f3542;
+}
+
 body {
-  background-color: #2f3542;
+  background-color: var(--primary-color);
   color: white;
 }
 .App {
   font-family: sans-serif;
   text-align: center;
+}
+a {
+  font-size: 1.2rem;
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  color: whitesmoke;
+  border: 2px solid white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  margin: 1rem auto;
+  transition: 0.3s;
+}
+.btn:hover,
+a:hover {
+  color: var(--primary-color);
+  background-color: white;
+  cursor: pointer;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.btn {
+  font-size: 1.2rem;
+  background: transparent;
+  width: fit-content;
+  text-decoration: none;
+  color: whitesmoke;
+  border: 2px solid white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  margin: 1rem auto;
+  transition: 0.3s;
 }
