@@ -9,11 +9,28 @@ export default function App() {
     setDate(event.target.value);
   }
 
+  function getSplitDate(date) {
+    var splitDate = date.split("-");
+    var dateAsString = {
+      day: splitDate[2],
+      month: splitDate[1],
+      year: splitDate[0]
+    };
+    //return date in ddmmyyyy format
+    return dateAsString;
+  }
+
   function handleClick(date) {
     if (date === "") {
       setMessage("Please enter the date.");
-    } else {
-      setMessage("The date entered is " + date);
+    }
+    // Main logic here...
+    else {
+      // Convert the date into ddmmyyyy format
+      // first split it into 3 parts
+      var dateStr = getSplitDate(date);
+      console.log(dateStr);
+      setMessage("The date entered is ");
     }
   }
 
