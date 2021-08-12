@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function App() {
   var [date, setDate] = useState("");
-  var [message, setMessage] = useState("");
+  var [message, setMessage] = useState("Your result will be shown here");
 
   // handles the change in date input field
   function handleChange(event) {
@@ -207,8 +207,9 @@ export default function App() {
         <button className="btn" onClick={() => handleClick(date)}>
           Check
         </button>
-
-        <h2>{message}</h2>
+        <div className="output">
+          <h2>{message}</h2>
+        </div>
       </div>
     </div>
   );
