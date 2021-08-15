@@ -1,6 +1,6 @@
 import "./styles.css";
 import { useState } from "react";
-
+import happyBirthday from "./happyBirthday.svg";
 export default function App() {
   var [date, setDate] = useState("");
   var [message, setMessage] = useState("Your result will be shown here");
@@ -201,12 +201,32 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="header">
+      <div className="title">
         <h1>Birthday Palindrome</h1>
-        <h2>Check if your birthday is a palindrome...</h2>
-        <a href="#main">Try it</a>
       </div>
-
+      <div class="intro-wrapper">
+        <div class="dots-wrapper">
+          <div id="dot-1" class="browser-dot"></div>
+          <div id="dot-2" class="browser-dot"></div>
+          <div id="dot-3" class="browser-dot"></div>
+        </div>
+        <div className="innerDiv">
+          <div className="header">
+            <h2>
+              Check if your <span>Birthday</span> is a <span>Palindrome</span>
+              ...
+            </h2>
+            <p>
+              A palindrome is a word/number which reads the same backward as
+              forward
+            </p>
+            <a href="#main">Try it</a>
+          </div>
+          <div className="headerImg">
+            <img src={happyBirthday} width="100%" height="80%"></img>
+          </div>
+        </div>
+      </div>
       <div id="main">
         <h1>Enter your birthdate and we will tell you if it's a palindrome</h1>
         <input type="date" onChange={() => handleChange(event)}></input>
