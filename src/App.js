@@ -1,6 +1,10 @@
 import "./styles.css";
 import { useState } from "react";
 import happyBirthday from "./happyBirthday.svg";
+import linkedIn from "./linkedIn.png";
+import twitter from "./twitter.png";
+import github from "./github.png";
+import briefcase from "./briefcase.png";
 export default function App() {
   var [date, setDate] = useState("");
   var [message, setMessage] = useState("Your result will be shown here");
@@ -259,6 +263,34 @@ export default function App() {
           <h2>{message}</h2>
         </div>
       </div>
+
+      {/* <footer>
+        <div className="creator">
+          Made with <strong>&lt;/&gt;</strong> by Omkar Ghate
+        </div>
+        <ul>
+          <li className="footerLink">
+            <a href="https://github.com/Omkar-Ghate" target="blank">
+              <img className="socialIcon" src={github}></img>
+            </a>
+          </li>
+          <li className="footerLink">
+            <a href="https://twitter.com/OmkarGhate9" target="blank">
+              <img className="socialIcon" src={twitter}></img>
+            </a>
+          </li>
+          <li className="footerLink">
+            <a href="https://www.linkedin.com/in/omkarghate/" target="blank">
+              <img className="socialIcon" src={linkedIn}></img>
+            </a>
+          </li>
+          <li className="footerLink">
+            <a href="https://omkarghate.netlify.app/" target="blank">
+              <img className="socialIcon" src={briefcase}></img>
+            </a>
+          </li>
+        </ul>
+      </footer> */}
     </div>
   );
 }
