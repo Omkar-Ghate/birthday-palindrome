@@ -199,10 +199,7 @@ export default function App() {
       </div>
 
       <div id="main">
-        <h1>
-          Enter your birthdate and we will tell you if your birthdate is a
-          palindrome
-        </h1>
+        <h1>Enter your birthdate and we will tell you if it's a palindrome</h1>
         <input type="date" onChange={() => handleChange(event)}></input>
         <button className="btn" onClick={() => handleClick(date)}>
           Check
