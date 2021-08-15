@@ -1,7 +1,9 @@
 :root {
   --primary-color: #2f3542;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   background-color: var(--primary-color);
   color: white;
