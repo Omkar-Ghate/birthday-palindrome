@@ -228,7 +228,19 @@ export default function App() {
         </div>
       </div>
       <div id="main">
-        <h1>Enter your birthdate and we will tell you if it's a palindrome</h1>
+        <h1>
+          Enter your birthdate and we will tell you <br></br>if it's a
+          palindrome
+        </h1>
+        <div className="description">
+          <p>
+            This app checks your birthdate in 6 formats dd-mm-yyyy, mm-dd-yy,
+            yyyy-mm-dd, mm-dd-yy, dd-mm-yy, yy-mm-dd. <br></br>
+            If your birthdate is 01 Aug 1995, then app will check for 01081995,
+            08011995, 19950801, 080195, 010895, and 950801.
+          </p>
+        </div>
+
         <input type="date" onChange={() => handleChange(event)}></input>
         <button className="btn" onClick={() => handleClick(date)}>
           Check

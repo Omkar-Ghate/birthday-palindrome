@@ -135,6 +135,17 @@ a:hover {
   align-items: center;
 }
 
+.description {
+  width: 65%;
+  max-width: 40rem;
+  font-size: 1.2rem;
+  text-align: center;
+}
+#main h1 {
+  text-align: center;
+  font-size: 2rem;
+}
+
 input {
   margin: 1rem;
   font-size: 1.2rem;
@@ -165,4 +176,5 @@ input {
   padding: 0.1rem 0.5rem;
   width: 50%;
   max-width: 35rem;
+  text-align: center;
 }
