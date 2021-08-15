@@ -5,6 +5,8 @@ export default function App() {
   var [date, setDate] = useState("");
   var [message, setMessage] = useState("Your result will be shown here");
 
+  var [show, setShow] = useState("none");
+
   // handles the change in date input field
   function handleChange(event) {
     setDate(event.target.value);
@@ -54,6 +56,11 @@ export default function App() {
     }
   }
 
+  // Function to handle click on how does this work button
+  function handleHowBtnClick() {
+    var showStyle = show === "none" ? "block" : "none";
+    setShow(showStyle);
+  }
   /* 
   ### Helper Functions ###
   */
@@ -233,7 +240,10 @@ export default function App() {
           palindrome
         </h1>
         <div className="description">
-          <p>
+          <button className="btn" onClick={handleHowBtnClick}>
+            How does this work?
+          </button>
+          <p style={{ display: `${show}` }}>
             This app checks your birthdate in 6 formats dd-mm-yyyy, mm-dd-yy,
             yyyy-mm-dd, mm-dd-yy, dd-mm-yy, yy-mm-dd. <br></br>
             If your birthdate is 01 Aug 1995, then app will check for 01081995,
