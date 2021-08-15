@@ -33,15 +33,24 @@ export default function App() {
 
       var nextPalindromeDate = getNextPalindromeDate(dateStr)[1];
       var daysInBetween = getNextPalindromeDate(dateStr)[0];
-      setMessage(
-        checkPalindromeForAllDateFormats(dateStr).toString() +
-          " " +
-          nextPalindromeDate.day +
-          nextPalindromeDate.month +
-          nextPalindromeDate.year +
-          " " +
-          daysInBetween
-      );
+
+      if (checkPalindromeForAllDateFormats(dateStr).toString() === "true") {
+        setMessage("Whoa! Your birthdate is a palindrome.");
+      } else if (
+        checkPalindromeForAllDateFormats(dateStr).toString() === "false"
+      ) {
+        setMessage(
+          "Awww! Your birthdate is not palindrome. Nearest palindrome date is " +
+            nextPalindromeDate.year +
+            "-" +
+            nextPalindromeDate.month +
+            "-" +
+            nextPalindromeDate.day +
+            ". You missed it by " +
+            daysInBetween +
+            " days."
+        );
+      }
     }
   }
 
