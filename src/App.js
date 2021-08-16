@@ -328,7 +328,7 @@ export default function App() {
         </div>
       </div>
 
-      {/* <footer>
+      <footer>
         <div className="creator">
           Made with <strong>&lt;/&gt;</strong> by Omkar Ghate
         </div>
@@ -354,7 +354,7 @@ export default function App() {
             </a>
           </li>
         </ul>
-      </footer> */}
+      </footer>
     </div>
   );
 }
