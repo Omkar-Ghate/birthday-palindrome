@@ -187,7 +187,11 @@ input {
   display: inline-block;
   padding: 1rem;
   font-size: 1.4rem;
-  color: black;
+  transition: 0.3s;
+}
+
+.footerLink a:hover {
+  transform: scale(1.1);
 }
 
 footer li {
