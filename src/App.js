@@ -34,27 +34,48 @@ export default function App() {
       var dateStr = getDateAsString(date);
 
       //returns an object date = {day: "", month: "", year: ""}
-      console.log(date);
-      console.log(dateStr);
+      // console.log(date);
+      // console.log(dateStr);
 
-      var nextPalindromeDate = getNextPalindromeDate(dateStr)[1];
-      var daysInBetween = getNextPalindromeDate(dateStr)[0];
+      // var nextPalindromeDate = getNextPalindromeDate(dateStr)[1];
+      // var daysInBetween1 = getNextPalindromeDate(dateStr)[0];
+      // var prevPalindromeDate = getPrevPalindromeDate(dateStr)[1];
+      // var daysInBetween2 = getPrevPalindromeDate(dateStr)[0];
+      // console.log(daysInBetween1, daysInBetween2);
+      var list = checkPalindromeForAllDateFormats(dateStr);
+      var isPalindrome = false;
 
-      if (checkPalindromeForAllDateFormats(dateStr).toString() === "true") {
+      for (let i = 0; i < list.length; i++) {
+        if (list[i]) {
+          isPalindrome = true;
+          break;
+        }
+      }
+
+      if (isPalindrome === true) {
         setMessage("Whoa! Your birthdate is a palindrome.");
-      } else if (
-        checkPalindromeForAllDateFormats(dateStr).toString() === "false"
-      ) {
+      } else {
+        const [ctr1, nextDate] = getNextPalindromeDate(date);
+        const [ctr2, prevDate] = getPrevPalindromeDate(date);
         setMessage(
           "Awww! Your birthdate is not palindrome. Nearest palindrome date is " +
-            nextPalindromeDate.year +
-            "-" +
-            nextPalindromeDate.month +
-            "-" +
-            nextPalindromeDate.day +
-            ". You missed it by " +
-            daysInBetween +
-            " days."
+            (ctr1 < ctr2
+              ? nextDate.day +
+                "-" +
+                nextDate.month +
+                "-" +
+                nextDate.year +
+                ". You missed it by " +
+                ctr1 +
+                " days."
+              : prevDate.day +
+                "-" +
+                prevDate.month +
+                "-" +
+                prevDate.year +
+                ". You missed it by " +
+                ctr2 +
+                " days.")
         );
       }
     }
@@ -127,15 +148,14 @@ export default function App() {
 
   // check if the string is a palindrome in at least one of the 6 formats
   function checkPalindromeForAllDateFormats(date) {
-    var dateInAllFormats = getDateInAllFormats(date);
-    var flag = false;
-    for (var i = 0; i < dateInAllFormats.length; i++) {
-      if (checkPalindrome(dateInAllFormats[i])) {
-        flag = true;
-        break;
-      }
+    var dateFormatList = getDateInAllFormats(date);
+    var palindromeList = [];
+
+    for (var i = 0; i < dateFormatList.length; i++) {
+      var result = checkPalindrome(dateFormatList[i]);
+      palindromeList.push(result);
     }
-    return flag;
+    return palindromeList;
   }
 
   // Check for leap year
@@ -148,44 +168,36 @@ export default function App() {
 
   // Calculate the next date
   function getNextDate(date) {
-    var day = date.day + 1; // increment the current date
+    var day = date.day + 1;
     var month = date.month;
     var year = date.year;
 
     var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-    // If it's Feb
     if (month === 2) {
-      // if it's a leap year
       if (isLeapYear(year)) {
         if (day > 29) {
           day = 1;
-          month++;
+          month = 3;
+        }
+      } else {
+        if (day > 28) {
+          day = 1;
+          month = 3;
         }
       }
-
-      // if it's not a leap year
-      else {
-        if (day > 28) day = 1;
-        month++;
-      }
-    }
-
-    // For other months
-    else {
-      // if day exceeds the max no. of days in the month
+    } else {
       if (day > daysInMonth[month - 1]) {
         day = 1;
         month++;
       }
     }
-    // months exceeds 12
+
     if (month > 12) {
       month = 1;
       year++;
     }
 
-    // return the newly incremented date
     return {
       day: day,
       month: month,
@@ -195,19 +207,71 @@ export default function App() {
 
   // Find the next palindrome date
   function getNextPalindromeDate(date) {
-    var cntr = 0;
     var nextDate = getNextDate(date);
-    while (true) {
-      cntr++; // to count the number of days b/w current and next palindrome
+    var ctr = 0;
+
+    while (1) {
+      ctr++;
       var dateStr = getDateAsString(nextDate);
-      var isPalindrome = checkPalindromeForAllDateFormats(dateStr);
-      if (isPalindrome) {
-        break;
+      var resultList = checkPalindromeForAllDateFormats(dateStr);
+
+      for (let i = 0; i < resultList.length; i++) {
+        if (resultList[i]) {
+          return [ctr, nextDate];
+        }
       }
-      nextDate = getNextDate(nextDate); // increment the date
+      nextDate = getNextDate(nextDate);
+    }
+  }
+  // Calculate the previous date
+  function getPrevDate(date) {
+    var day = date.day - 1;
+    var month = date.month;
+    var year = date.year;
+
+    var daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    if (day === 0) {
+      month--;
+
+      if (month === 0) {
+        month = 12;
+        day = 31;
+        year--;
+      } else if (month === 2) {
+        if (isLeapYear(year)) {
+          day = 29;
+        } else {
+          day = 28;
+        }
+      } else {
+        day = daysInMonth[month - 1];
+      }
     }
 
-    return [cntr, nextDate];
+    return {
+      day: day,
+      month: month,
+      year: year
+    };
+  }
+  // Find the previous palindrome date
+  function getPrevPalindromeDate(date) {
+    var previousDate = getPrevDate(date);
+    var ctr = 0;
+
+    while (1) {
+      ctr++;
+      var dateStr = getDateAsString(previousDate);
+      var resultList = checkPalindromeForAllDateFormats(dateStr);
+
+      for (let i = 0; i < resultList.length; i++) {
+        if (resultList[i]) {
+          return [ctr, previousDate];
+        }
+      }
+      previousDate = getPrevDate(previousDate);
+    }
   }
 
   return (
