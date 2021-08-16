@@ -112,10 +112,14 @@ body {
 .header {
   color: var(--background-color);
   margin-left: 5rem;
+  width: 100%;
 }
 
 .header > h2 {
   font-size: 4rem;
+}
+.header > p {
+  max-width: 30rem;
 }
 .header > p,
 .header > a {
@@ -123,6 +127,11 @@ body {
 }
 .header > h2 {
   font-family: "Source Serif Pro", serif;
+}
+.headerImg > img {
+  width: 100%;
+  max-width: 45rem;
+  height: 80%;
 }
 
 /* Main Section */
@@ -181,6 +190,10 @@ input {
   max-width: 35rem;
   text-align: center;
 }
+#main > p {
+  width: 50%;
+  max-width: 40rem;
+}
 
 /* Footer Section */
 
@@ -231,4 +244,47 @@ footer ul {
 .socialIcon {
   height: 2rem;
   width: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 375px) {
+  footer ul {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 575px) {
+  #main h1 {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 775px) {
+  .innerDiv {
+    margin: auto;
+    padding: 0.2rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .header {
+    margin: auto;
+    text-align: center;
+    padding: 0.4rem;
+  }
+  .header > a,
+  .header > p {
+    display: block;
+    margin: 0.2rem auto;
+  }
+  .headerImg {
+    text-align: center;
+  }
+  .headerImg > img {
+    height: 50%;
+    width: 50%;
+  }
+  .intro-wrapper {
+    height: 50rem;
+  }
 }

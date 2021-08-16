@@ -298,7 +298,7 @@ export default function App() {
             <a href="#main">Try it</a>
           </div>
           <div className="headerImg">
-            <img src={happyBirthday} width="100%" height="80%"></img>
+            <img src={happyBirthday}></img>
           </div>
         </div>
       </div>
