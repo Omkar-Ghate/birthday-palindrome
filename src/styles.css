@@ -251,8 +251,15 @@ footer ul {
   footer ul {
     flex-direction: column;
   }
+  .output {
+    margin-bottom: 5rem;
+  }
 }
-
+@media (max-width: 310px) {
+  .output {
+    margin-bottom: 15rem;
+  }
+}
 @media (max-width: 575px) {
   #main h1 {
     margin-top: 2rem;
