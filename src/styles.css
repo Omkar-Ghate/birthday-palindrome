@@ -161,6 +161,10 @@ body {
 input {
   margin: 1rem;
   font-size: 1.2rem;
+  height: 1.5rem;
+  padding: 0.5rem 0.3rem;
+  border: 2px solid transparent;
+  border-radius: 0.3rem;
 }
 
 .btn {
@@ -258,6 +262,9 @@ footer ul {
 @media (max-width: 310px) {
   .output {
     margin-bottom: 15rem;
+  }
+  input {
+    padding: 1.5rem;
   }
 }
 @media (max-width: 575px) {
