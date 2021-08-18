@@ -45,6 +45,7 @@ body {
   border-radius: 0.3rem;
   padding-bottom: 2rem;
   height: 80vh;
+  width: fit-content;
 }
 
 #navigation a {
@@ -141,7 +142,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
 }
 
 .description {
@@ -243,6 +244,7 @@ footer ul {
   padding-inline-start: 0px;
   margin-block-start: 0;
   margin-block-end: 0;
+  flex-wrap: wrap;
 }
 
 .socialIcon {
@@ -255,19 +257,10 @@ footer ul {
   footer ul {
     flex-direction: column;
   }
-  .output {
-    margin-bottom: 5rem;
-  }
 }
 @media (max-width: 310px) {
-  .output {
-    margin-bottom: 15rem;
-  }
   input {
     padding: 1.5rem;
-  }
-  #main {
-    margin-top: 2.5rem;
   }
 }
 @media (max-width: 575px) {
